@@ -69,7 +69,7 @@ echo "<table border='1'>";
 echo "<thead><th>ISBN</th><th>Jméno autora</th><th>Příjmení autora</th><th>Název</th><th>Popis</th></thead>";
 while ($radek = mysqli_fetch_array($vysledek))
 {
-    echo "<tr><td>".$radek["isbn"]."</td><td>".$radek["jmeno_autora"]."</td><td>".$radek["prijmeni_autora"]."</td><td>".$radek["nazev"]."</td><td>".$radek["popis"]."</td></tr>";   
+    echo "<tr><td>".htmlspecialchars($radek["isbn"])."</td><td>".htmlspecialchars($radek["jmeno_autora"])."</td><td>".htmlspecialchars($radek["prijmeni_autora"])."</td><td>".htmlspecialchars($radek["nazev"])."</td><td>".htmlspecialchars($radek["popis"])."</td></tr>";   
 }
 echo "</table>";
 }
