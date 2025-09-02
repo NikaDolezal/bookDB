@@ -19,5 +19,8 @@
 	<textarea name="popis"></textarea>
     <button type="sumit">Vložit</button>
     </form>
+    <form action="zkouska.php" method="GET">
+        <button type="submit">Zpět</button>
+</form>
 </body>
 </html>
