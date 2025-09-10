@@ -13,9 +13,12 @@
 //parse lines until EOF
 while(! feof($file)) {
   $line = fgets($file);
+  if ( str_starts_with( $line, "Location" ) ){
+    // sscanf($line, "");
+  }
   
-  if ( !( strstr($line, ":", true) ) ){
-    //':' is only present in lines that contain an entry, rest is printed as-is
+  if ( !( str_starts_with( $line, "* " ) ) ){
+    //'* ' is only present in lines that contain an entry, rest is printed as-is
     echo $line."<br>";
     } else {
     //testing sscanf()
@@ -25,7 +28,12 @@ while(! feof($file)) {
     $notes = '';
     $pattern = "* %[^,], %[^:]: %[^>]> %[0-9A-Za-z/ -]+";
     sscanf($line, $pattern, $auth_surname, $auth_name, $title, $notes);
+    if($notes === ''){
+    echo "author surname: ".$auth_surname." author name: ".$auth_name.", book title: ".trim($title).". Notes: ".$notes."<br />";
+    } else {
     echo "author surname: ".$auth_surname." author name: ".$auth_name.", book title: ".trim($title, " -").". Notes: ".$notes."<br />";
+
+    }
   }
 }
 
